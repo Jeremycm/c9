@@ -2,7 +2,7 @@
   <div class="page-header"></div>
   <div class="row">
     <div class="jumbotron">
-      <%= image_tag(@photo.image.url(), class: "img-responsive") if @photo.image?%>
+      <%= image_tag(@photo.image.url(), class: "img-responsive center-block") if @photo.image?%>
       <p class="text-center">
         <br/>
         <%= link_to 'Delete', photo_path(@photo), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-default btn-lg" %>

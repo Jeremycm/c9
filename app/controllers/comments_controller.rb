@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :login_authenticate
+  before_filter :authenticate_user!
     def create
         @photo = Photo.find(params[:photo_id])
         @comment = @photo.comments.create(comment_params)

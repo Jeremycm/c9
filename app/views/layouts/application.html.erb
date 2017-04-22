@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+   <%= stylesheet_link_tag "custom.css.scss" %> 
+   
+</head>
+<body>
+
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-toggleable-md">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                 
+                 
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                   <ul class="nav navbar-nav " >
+                       <li role="presentation" style="font-size:1.7em; padding-top:0.5em;"><%= link_to 'Home', root_path %></li>
+                   </ul>
+                <% if user_signed_in? %>
+                    <ul class="nav navbar-nav " >
+                        <li role="presentation" style="font-size:1.7em; padding-top:0.5em;"><%= link_to 'Photos', :photos %></li>
+                        <li role="presentation" style="font-size:1.7em; padding-top:0.5em;"><%= link_to 'Upload Your Photo', new_photo_path %></li>
+                    </ul>
+                <% end %>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="page-scroll">
+                        <% unless user_signed_in? %>
+                            <%= link_to "Sign Up", new_user_registration_path %>
+                        <% end %> 
+                    </li>
+                    <li class="page-scroll">
+                         <% unless user_signed_in? %>
+                            <%= link_to "Sign In", new_user_session_path %>  
+                        <% end %> 
+                    </li>
+                    <li class="page-scroll">
+                         <% if user_signed_in? %>
+                            <div class="dropdown">
+                              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true">
+                                    <div class="round-image-50"><%= image_tag(current_user.avatar.url(:thumb)) %></div>
+                                    <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
+                                  <li><%= link_to current_user.name, :photos %></li>
+                                  <li role="separator" class="divider"></li>
+                                  <li>
+                                      <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+                                  </li>
+                                </ul>
+                            </div>
+                          <% end %>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+
+    </nav>
+
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<%= yield %>
+
+</body>
+</html>

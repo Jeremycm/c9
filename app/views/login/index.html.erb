@@ -1,0 +1,18 @@
+<head>
+    <link href="https://blackrockdigital.github.io/startbootstrap-stylish-portfolio/css/stylish-portfolio.css" rel="stylesheet">
+</head>
+<body>
+    <header id="top" class="header">
+            <div class="text-vertical-center">
+                <h1>My Cookpad Web</h1>
+                <h3>A photo upload website with log in</h3>
+                <br>
+                <% unless user_signed_in? %>
+                     <%= link_to "Sign In", new_user_session_path,  class: 'btn btn-default btn-lg' %>  
+                <% end %>
+                <% if user_signed_in? %>
+                    <%= link_to 'Photos', :photos, class: 'btn btn-default btn-lg' %>
+                <% end %>
+            </div>
+    </header>
+</body>

@@ -9,3 +9,4 @@
      7. open browser and go to:  
      8. localhost:3000  
      9. You should able to see the website.  
+Note: Please be confirmed that you have connect to the netword since there are some css style sheets linked online  
